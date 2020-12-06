@@ -52,7 +52,6 @@ public class UserController {
 		try {
 			User user = new User();
 			user.setUsername(createUserRequest.getUsername());
-			log.info("CreateUser request successes", createUserRequest.getUsername());
 			Cart cart = new Cart();
 			cartRepository.save(cart);
 			user.setCart(cart);
@@ -62,9 +61,10 @@ public class UserController {
 			}
 			user.setPassword(bCryptPasswordEncoder.encode(createUserRequest.getPassword()));
 			userRepository.save(user);
+			log.info("CreateUser request successes", createUserRequest.getUsername());
 			return ResponseEntity.ok(user);
 		} catch (Exception e) {
-			log.info("Exception", e.getStackTrace());
+			log.info("Create User Exception", e.getStackTrace());
 			return ResponseEntity.badRequest().build();
 		}
 	}
