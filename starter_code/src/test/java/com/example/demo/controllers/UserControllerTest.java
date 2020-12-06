@@ -37,7 +37,7 @@ public class UserControllerTest {
         CreateUserRequest createUserRequest = new CreateUserRequest();
         createUserRequest.setUsername(USER_NAME);
         createUserRequest.setPassword(USER_PASSWORD);
-        createUserRequest.setConfirmationPassword(USER_PASSWORD);
+        createUserRequest.setConfirmPassword(USER_PASSWORD);
 
         ResponseEntity<User> responseEntity = userController.createUser(createUserRequest);
         assertNotNull(responseEntity);
